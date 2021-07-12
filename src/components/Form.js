@@ -10,13 +10,14 @@ function Form(props){
         e.preventDefault();
 
         props.setTodos([
-            ...props.todos, {text:props.inputText,completed:false, id:Math.random() * 100}
-        ])
+            ...props.todos, {text:props.inputText,completed:false, id:Math.random() * 100},
+        ]);
+        props.setInputText("")
     }
 
     return(
         <form>
-            <input onChange={inputTextHandler} type="text" className="todo-input" />
+            <input value={props.inputText} onChange={inputTextHandler} type="text" className="todo-input" />
             <button onClick={submitTodoHandler} className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
