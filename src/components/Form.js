@@ -8,7 +8,10 @@ function Form(props){
 
     const submitTodoHandler = (e) =>{
         e.preventDefault();
-        
+
+        props.setTodos([
+            ...props.todos, {text:props.inputText,completed:false, id:Math.random() * 100}
+        ])
     }
 
     return(
