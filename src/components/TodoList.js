@@ -9,7 +9,7 @@ function TodoList(props){
         <div className="todo-container">
             <ul className="todo-list">
                 {props.todos.map(todo =>(
-                    <Todo key={todo.id} text={todo.text}/>
+                    <Todo setTodos={props.setTodos} todos={props.todos} todo={todo} key={todo.id} text={todo.text}/>
                 ))}
             </ul>
         </div>
