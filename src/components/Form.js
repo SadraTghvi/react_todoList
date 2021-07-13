@@ -9,7 +9,7 @@ function Form(props){
     const submitTodoHandler = (e) =>{
         e.preventDefault();
         if (props.inputText === ""){
-            return props.setTodos([...props.todos, {text:"Not Set",completed:false, id:Math.random() * 100},]);
+            return 
         }
 
         props.setTodos([
