@@ -8,6 +8,11 @@ function Form(props){
 
     const submitTodoHandler = (e) =>{
         e.preventDefault();
+            if (props.inputText == ""){
+                return props.setTodos([
+                ...props.todos, {text:"Not Set",completed:false, id:Math.random() * 100},
+            ]);
+        }
 
         props.setTodos([
             ...props.todos, {text:props.inputText,completed:false, id:Math.random() * 100},
@@ -17,7 +22,12 @@ function Form(props){
 
     return(
         <form>
-            <input value={props.inputText} onChange={inputTextHandler} type="text" className="todo-input" />
+            <input 
+                value={props.inputText} 
+                onChange={inputTextHandler} 
+                type="text" 
+                className="todo-input" 
+            />
             <button onClick={submitTodoHandler} className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>

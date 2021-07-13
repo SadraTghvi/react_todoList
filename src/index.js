@@ -12,7 +12,7 @@ function Main(props){
     return(
         <div className="App">
             <header>
-                <h1>React Todo List</h1>
+                <h1>React Todo List </h1>
             </header>
             <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText}/>
             <TodoList />
