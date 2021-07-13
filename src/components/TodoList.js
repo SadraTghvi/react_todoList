@@ -3,11 +3,14 @@ import React from 'react'
 import Todo from './todo'
 
 
-function TodoList(){
+function TodoList(props){
+    
     return(
         <div className="todo-container">
             <ul className="todo-list">
-                <Todo />
+                {props.todos.map(todo =>(
+                    <Todo text={todo.text}/>
+                ))}
             </ul>
         </div>
     )
