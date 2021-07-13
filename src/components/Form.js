@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useRef} from "react";
 
 
 function Form(props){
+    const inputRef = useRef(null)
     const inputTextHandler = (e) =>{
         props.setInputText(e.target.value)
     }
@@ -11,18 +12,22 @@ function Form(props){
         if (props.inputText === ""){
             return 
         }
+        if(inputRef.current){
+            inputRef.current.value = ""
+        }
 
         props.setTodos([
             ...props.todos, {text:props.inputText,completed:false, id:Math.random() * 100},
         ]);
-        props.setInputText("")
+        // props.setInputText("")
     }
 
     return(
         <form>
             <input 
+                ref={inputRef}
                 value={props.inputText} 
-                onChange={inputTextHandler} 
+                // onChange={inputTextHandler} 
                 type="text" 
                 className="todo-input" 
             />
