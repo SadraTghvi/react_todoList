@@ -3,10 +3,7 @@ import React from 'react'
 function Todo(props){
     
     const deleteTodo = () =>{
-        props.setTodos(props.todos.filter((el) =>{
-            return el.id !== props.todo.id
-        }
-        ));
+        props.setTodos(props.todos.filter((el) =>el.id !== props.todo.id));
     }
 
     const completeTodo = () =>{
