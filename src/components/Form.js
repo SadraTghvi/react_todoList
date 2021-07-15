@@ -1,8 +1,7 @@
-import React,{useRef} from "react";
+import React from "react";
 
 
 function Form(props){
-    const inputRef = useRef(null)
     const inputTextHandler = (e) =>{
         props.setInputText(e.target.value)
     }
@@ -12,22 +11,22 @@ function Form(props){
         if (props.inputText === ""){
             return 
         }
-        if(inputRef.current){
-            inputRef.current.value = ""
-        }
 
         props.setTodos([
             ...props.todos, {text:props.inputText,completed:false, id:Math.random() * 100},
         ]);
-        // props.setInputText("")
+        props.setInputText("")
+    };
+
+    const statusHandler = (e) =>{
+        props.setStatus(e.target.value)
     }
 
     return(
         <form>
             <input 
-                ref={inputRef}
                 value={props.inputText} 
-                // onChange={inputTextHandler} 
+                onChange={inputTextHandler} 
                 type="text" 
                 className="todo-input" 
             />
@@ -35,7 +34,7 @@ function Form(props){
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
-                <select name="todos" className="filter-todo">
+                <select onChange={statusHandler} name="todos" className="filter-todo">
                 <option value="all">All</option>
                 <option value="completed">Completed</option>
                 <option value="uncompleted">Uncompleted</option>
