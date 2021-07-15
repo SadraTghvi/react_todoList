@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 // components
@@ -11,13 +11,17 @@ function Main(props){
     const [status,setStatus] = useState("all")
     const [filteredTodos, setFilteredTodos] = useState([])
 
+    useEffect(() => {
+        filterHandler();
+    }, [todos,status])
+
     const filterHandler = () =>{
         switch(status){
             case "completed":
                 setFilteredTodos(todos.filter(todo => todo.completed === true));
                 break;
             case "uncompleted":
-                setFilteredTodos(todos.filter(todo => todo.uncompleted === true));
+                setFilteredTodos(todos.filter(todo => todo.completed === false));
                 break;
             default:
                 setFilteredTodos(todos);
@@ -31,7 +35,7 @@ function Main(props){
                 <h1>React Todo List </h1>
             </header>
             <Form setStatus={setStatus} inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText}/>
-            <TodoList setTodos={setTodos} todos={todos}/>
+            <TodoList filteredTodos={filteredTodos} setTodos={setTodos} todos={todos}/>
         </div>
     )
 }
